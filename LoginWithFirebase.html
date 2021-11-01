@@ -100,7 +100,11 @@
               </li>
             </ul>
             <div class="text-end">
-              <button type="button" class="btn btn-success" href="">
+              <button
+                type="button"
+                class="btn btn-success"
+                onclick="goToSignupPage()"
+              >
                 Sign-up
               </button>
             </div>
@@ -145,6 +149,7 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+    <script src="client.js"></script>
     <script>
       // Initialize the FirebaseUI Widget using Firebase.
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
