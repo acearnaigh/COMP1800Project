@@ -11,7 +11,7 @@ app.post("/posts", async (req, res) => {
   const data = req.body;
   const collectionRef = collection(db, "posts");
   await addDoc(collectionRef, data);
-  res.status(200).send();
+  res.status(201).send();
 });
 
 // route for getting all posts
