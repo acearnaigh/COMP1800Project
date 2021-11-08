@@ -76,6 +76,7 @@ window.addEventListener("load", function(){
         //---------------------------------------------------------------------------
     });
 
+
 })
 
 //this is apache multiselect that converts a simple select statement
@@ -85,8 +86,26 @@ $(document).ready(function() {
         includeSelectAllOption: true, inheritClass: true
     });
 });
+
+
 //-------------------------------------------------------------------
 
+document.getElementById("submitPost").addEventListener("click", function(){
+    var postInnerHTML = document.getElementById("writeText").value;
+    var postTags = $('#selectDrop').val();
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var postDB = db.collection("posts");
+
+    postDB.add({
+        description: postInnerHTML,
+        tags: postTags,
+        date: date,
+        time: time
+    })
+
+})
 
 // window.addEventListener("beforeunload", function (e) {
 //     var confirmationMessage = 'It looks like you have been editing something. '
