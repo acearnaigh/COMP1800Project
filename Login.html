@@ -159,8 +159,26 @@
             // User successfully signed in.
             // Return type determines whether we continue the redirect automatically
             // or whether we leave that to developer to handle.
-            return true;
-          },
+            var user = authResult.user;
+
+                    //user is new or pre-existing
+                    if (authResult.additionalUserInfo.isNewUser){
+                        db.collection("users").doc(user.uid).set({
+                            name: user.displayName,
+                            email: user.email
+                        }).then(function(){
+                            console.log("a");
+                            window.location.assign("main.html");
+                        })
+
+                        .catch(function(error) {
+                            console.log("error: " + error);
+                        })
+                    } else{
+                        return true;
+                    }
+                    return false;
+                },
           uiShown: function () {
             // The widget is rendered.
             // Hide the loader.
@@ -188,5 +206,7 @@
       // The start method will wait until the DOM is loaded.
       ui.start("#firebaseui-auth-container", uiConfig);
     </script>
+
+
   </body>
 </html>
