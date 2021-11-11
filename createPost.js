@@ -90,22 +90,51 @@ $(document).ready(function() {
 
 //-------------------------------------------------------------------
 
-document.getElementById("submitPost").addEventListener("click", function(){
+document.getElementById("submitPost").addEventListener("click", async function storeData(){
     var postInnerHTML = document.getElementById("writeText").value;
     var postTags = $('#selectDrop').val();
-    var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    // var today = new Date();
+    // var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var time = firebase.firestore.Timestamp.now();
     var postDB = db.collection("posts");
 
-    postDB.add({
-        description: postInnerHTML,
-        tags: postTags,
-        date: date,
-        time: time
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            var currentUser = db.collection("users").doc(user.uid)
+            var userUID = user.uid;
+            var postID = time + userUID;
+            //get the document for current user.
+            currentUser.get()
+                .then(userDoc => {
+                                                //get user Email
+                    var userEmail = userDoc.data().email;
+                                                // Start a new collection and add all data in it.
+                    postDB.doc(postID).set({
+                        description: postInnerHTML,
+                        tags: postTags,
+                        time: time,
+                        userUID: userUID
+                    }).then( () => {
+                        postDB.doc(postID).onSnapshot(postSnapshot => {
+                            if (postSnapshot.exists) {
+                                window.location.href = "./postDisplay.html";
+                            }
+                    } )
+
+
+                })
+                })
+        } else {
+            // No user is signed in.
+            console.log("no user signed in");
+        }
+
     })
 
+
 })
+
 
 // window.addEventListener("beforeunload", function (e) {
 //     var confirmationMessage = 'It looks like you have been editing something. '
