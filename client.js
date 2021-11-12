@@ -2,11 +2,26 @@ function goToLoginPage() {
   window.location.href = "login.html";
 }
 
-function goToSignupPage() {
-  // TODO change url to signup html file
-  window.location.href = "login.html";
+function logout() {
+  firebase
+    .auth()
+    .signOut()
+    .then(function () {
+      console.log("logout successful");
+      window.location.assign("index.html");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
-function goToIndexPage() {
-  window.location.href = "index.html"
-}
+// hide login/signup button if user logged in
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    $("#loginSignupButton").addClass("loggedIn");
+    $("#logoutButton").css("display", "inline-block");
+  } else {
+    $("#loginSignupButton").removeClass("loggedIn");
+    $("#logoutButton").css("display", "none");
+  }
+});
