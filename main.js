@@ -1,12 +1,21 @@
-//logout
-const logout = document.querySelector('#')
+function logout() {
+  firebase
+    .auth()
+    .signOut()
+    .then(function () {
+      console.log("logout successful");
+      window.location.assign("index.html");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
 
-document.getElementById("logout").addEventListener("click", function () {
-    firebase.auth().signOut()
-        .then(function () {
-            console.log("logout successful")
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
-})
+// hide login/signup button if user logged in
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    $("#loginSignupButton").toggleClass("loggedIn");
+  } else {
+    $("#loginSignupButton").toggleClass("loggedIn");
+  }
+});

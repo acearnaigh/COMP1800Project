@@ -1,20 +1,28 @@
 <!--Navbar thatt is picked up by JS
 Make changes here to reflect them globally-->
 
-
-
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+<nav
+  class="navbar navbar-expand-sm navbar-dark bg-dark"
+  aria-label="Third navbar example"
+>
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Web-app</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
-      aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample03"
+      aria-controls="navbarsExample03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExample03">
       <ul class="navbar-nav me-auto mb-2 mb-sm-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="main.html">Home</a>
         </li>
         <!-- <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -23,8 +31,14 @@ Make changes here to reflect them globally-->
             <a class="nav-link disabled">Disabled</a>
           </li> -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"
-            aria-expanded="false">Features</a>
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="dropdown03"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Features</a
+          >
           <ul class="dropdown-menu" aria-labelledby="dropdown03">
             <li><a class="dropdown-item" href="#">Classes</a></li>
             <li><a class="dropdown-item" href="#">Quizzes</a></li>
@@ -34,9 +48,10 @@ Make changes here to reflect them globally-->
         </li>
       </ul>
       <div class="text-end">
-        <button type="button" class="btn btn-outline-light me-2">Login</button>
-        <button type="button" class="btn btn-success">Sign-up</button>
-      </div>
+        <button id="loginSignupButton" type="button" class="btn btn-success" onclick="goToSignupPage()">
+          Login / Sign-up
+        </button>
+        <button type="button" class="btn btn-outline-light me-2" onClick="logout()">Logout</button>
     </div>
   </div>
 </nav>
