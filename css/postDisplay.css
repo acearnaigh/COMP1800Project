@@ -4,12 +4,17 @@
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 4%;
+    /* padding-top: 4%; */
     grid-template-columns: repeat(auto, 5);
     grid-template-rows: repeat(auto, 6);
     background-color: rgba(17, 129, 88, 0.247);
     border-radius: 10vw;
     padding: 3%;
+    margin-bottom: 4%;
+    border: 0.1vw solid rgb(0, 128, 0);
+    overflow: hidden;
+    word-wrap: break-word;
+
     /* row-gap: 5%; */
 }
 
@@ -57,33 +62,40 @@
     grid-column: 5/span 1;
     justify-self: right;
     font-size: 2vw;
+
 }
 
 .postContent {
     grid-row: 4/span 1;
     grid-column: 1/ span 5;
     margin: 3%;
-    font-size: 4vw;
+    font-size: 3vw;
     background-color: white;
     border-radius: 2vw;
+    border: 0.1vw solid black;
+    padding: 1%;
+    overflow: hidden;
+    word-wrap: break-word;
+    width: 70vw
+
 }
 
 .getFile {
     grid-row: 5/ span 1;
-    grid-column: 1/span 3;
+    grid-column: 2/span 3;
     align-self: center;
     justify-self: center;
     margin: 3%;
-    padding-left: 16%;
+    margin-right:27%;
+    /* padding-left: 20%; */
 }
 
 .getImage {
     grid-row: 5/ span 1;
-    grid-column: 3/span 1;
+    grid-column: 4/span 1;
     align-self: center;
     justify-self: right;
-    margin: 3%;
-    margin-right: -32%;
+    margin: -10%;
 }
 
 .postLike {
@@ -117,10 +129,14 @@
 
 #thumbUp {
     font-size: 5vw;
-    color: rgba(0, 0, 0, 0.945);
+    color: black;
 }
 
 #thumbDown {
     font-size: 5vw;
-    color: rgba(0, 0, 0, 0.945);
+    color: black;
+}
+
+#footerPlaceholder {
+    padding-top: 10%;
 }

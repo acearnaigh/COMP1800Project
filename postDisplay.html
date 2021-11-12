@@ -62,13 +62,37 @@
         <div id="hamPlaceholder"></div>
     </header>
 
-    <main id="container">
+    <main id = "postParent">
+        <template id = "container">
+            <div class = "postContainer">
+                <div class = "userAvatar"><img src = "./Images/defaultUser.jpg" class = "userImg"/></div>
+                <div class = "userName"></div>
+                <div class = "userTerm"><span>Term: </span><span id="term"></span><span> Set: </span><span id="set"></span></div>
+                <div class =  "postDate"></div>
+                <div class = "postTime"></div>
+                <div class = "postTags"><span>Tags: </span><span id = "tagsHere"></span></div>
+                <div class = "postContent"></div>
+                <div class = "postLike"><i id="thumbUp" class="material-icons">thumb_up</i></div>
+                <div class = "postDislike"><i id="thumbDown" class="material-icons">thumb_down</i></div>
+                <div class = "getFile"><button type="button" class="btn btn-dark">View Attachments</button></div>
+                <div class = "getImage"><button type="button" class="btn btn-dark">View Images</button></div>
+            </div>
+        </template>
+
+
 
     </main>
 
 
+
+
     <!--footer-->
-    <footer id="footerPlaceholder">
+    <footer >
+        <div id = "seeMore" class="d-grid gap-2">
+            <button type="button" class="btn btn-lg btn-block btn-dark">See more...</button>
+        </div>
+
+        <div id="footerPlaceholder"></div>
     </footer>
 
 
