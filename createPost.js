@@ -108,13 +108,14 @@ document.getElementById("submitPost").addEventListener("click", async function s
             currentUser.get()
                 .then(userDoc => {
                                                 //get user Email
-                    var userEmail = userDoc.data().email;
+                    var userName = userDoc.data().name;
                                                 // Start a new collection and add all data in it.
                     postDB.doc(postID).set({
                         description: postInnerHTML,
                         tags: postTags,
                         time: time,
-                        userUID: userUID
+                        userUID: userUID,
+                        posterName: userName
                     }).then( () => {
                         postDB.doc(postID).onSnapshot(postSnapshot => {
                             if (postSnapshot.exists) {
