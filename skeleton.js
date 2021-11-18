@@ -2,6 +2,6 @@
 //a html document. In this case: createPost.html
 
 
-console.log($("#navbarPlaceholder").load("nav.html"));
+console.log($("#navbarPlaceholder").load("nav.xml"));
 console.log($("#hamPlaceholder").load("hamburger.html"));
 console.log($("#footerPlaceholder").load("footer.html"));
