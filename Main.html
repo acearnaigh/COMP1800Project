@@ -36,32 +36,10 @@
 
     <body>
         <header>
-            <!--=================================================This is the top navbar=================================================-->
+            <!--navbar-->
             <div id="navbarPlaceholder"></div>
-
-            <!--=============================This is the hamburger (uses javascript at the bottom of page)=================================-->
-            <div id="mySidebar" class="sidebar">
-                <a
-                    href="javascript:void(0)"
-                    class="closebtn"
-                    onclick="closeNav()"
-                    >×</a
-                >
-                <a href="#">Wall-Updates</a>
-                <a href="#">Quizzes</a>
-                <a href="#">Assignments</a>
-                <a href="#">Office Hours</a>
-                <a href="#">To-Do List</a>
-                <a href="#">Covid News</a>
-                <a href="#">Settings</a>
-            </div>
-
-            <div id="main">
-                <button class="openbtn" onclick="openNav()">☰</button>
-                <!-- <h2>Collapsed Sidebar</h2>
-            <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p> -->
-            </div>
-            <!--=============================This is the hamburger (uses javascript at the bottom of page)=================================-->
+            <!--hamburger-->
+            <div id="hamPlaceholder"></div>
         </header>
 
         <main class="container-lg justify-content-center text-center">
@@ -121,72 +99,9 @@
 
         <div class="text-center py-5"></div>
         <!--=================================================This is the Sticky Footer=================================================-->
-        <footer
-            class="
-                navbar
-                justify-content-evenly
-                fixed-bottom
-                bg-success bg-gradient
-            "
-        >
-            <div id="footer_container">
-                <div id="daily">
-                    <a href="daily.html"
-                        ><i class="material-icons foot_icons"
-                            >calendar_view_day</i
-                        ><span id="daily_text" class="centering_icon_text"
-                            >Daily</span
-                        ></a
-                    >
-                </div>
-                <div id="weekly">
-                    <i class="material-icons foot_icons">calendar_view_week</i
-                    ><span id="weekly_text" class="centering_icon_text"
-                        >Weekly</span
-                    >
-                </div>
-                <div id="monthly">
-                    <i class="material-icons foot_icons">calendar_view_month</i
-                    ><span id="monthly_text" class="centering_icon_text"
-                        >Monthly</span
-                    >
-                </div>
-                <div id="add_post">
-                    <a href="createPost.html"
-                        ><i class="material-icons foot_icons">post_add</i
-                        ><span id="add_post_text" class="centering_icon_text"
-                            >Post</span
-                        ></a
-                    >
-                </div>
-            </div>
+        <footer id="footerPlaceholder">
         </footer>
-        <!--=================================================This is the Sticky Footer=================================================-->
-
-        <!-- Optional JavaScript; choose one of the two! -->
-
-        <!-- Option 1: Bootstrap Bundle with Popper -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"
-        ></script>
-        <script>
-            function openNav() {
-                document.getElementById('mySidebar').style.width = '350px';
-                document.getElementById('main').style.marginLeft = '350px';
-            }
-
-            function closeNav() {
-                document.getElementById('mySidebar').style.width = '0';
-                document.getElementById('main').style.marginLeft = '0';
-            }
-        </script>
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
-        <!--
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-      -->
+        <!--loading in the three basic elements navbar, footer, hamburger-->
         <script src="skeleton.js"></script>
         <script src="client.js"></script>
     </body>
