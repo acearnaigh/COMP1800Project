@@ -1,0 +1,71 @@
+.ui-datepicker-trigger {
+    width: 5vw;
+    margin-left: 2%;
+}
+
+.dtp > .dtp-content > .dtp-date-view > header.dtp-header {
+    background: rgb(13, 107, 52) !important;
+}
+.dtp div.dtp-date,
+.dtp div.dtp-time {
+    background: rgb(18, 146, 71) !important;
+}
+
+#writeTask {
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 6px;
+    display: block;
+    width: 90%;
+    min-height: 40px;
+    line-height: 20px;
+    resize: none;
+    overflow: hidden;
+    min-height: 40px;
+    /* max-height: 100px; */
+}
+
+.form-control {
+    width: 20vw;
+    background-color: rgb(193, 250, 215);
+    border: 1px solid rgb(13, 107, 52);
+}
+
+#inputContainer {
+    display: grid;
+    grid-template-rows: auto 5% auto 5% auto 5%;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+}
+
+#userInput {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 2;
+    /* align-self: center;
+    justify-self: center; */
+    margin-left: 10%;
+}
+#addDate {
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 1;
+    /* align-self: center;
+    justify-self: center; */
+    margin-right: 3%;
+    margin-left: auto;
+}
+
+#addTime {
+    grid-row: 3 / span 1;
+    grid-column: 2 / span 1;
+    /* align-self: center;
+    justify-self: center; */
+    margin-left: 3%;
+}
+
+#submitToDo {
+    grid-row: 5 / span 1;
+    grid-column: 1 / span 2;
+    align-self: center;
+    justify-self: center;
+}
