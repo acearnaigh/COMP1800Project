@@ -102,7 +102,7 @@
     /*Placing text underneath the icon*/
     left: -5%;
 }
-#monthly {
+#todo {
     /*monthly icon placement*/
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
@@ -110,7 +110,7 @@
     position: relative;
     left: 200%;
 }
-#monthly_text {
+#todo_text {
     /*Placing text underneath the icon*/
     left: -10%;
 }
