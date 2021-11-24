@@ -1,0 +1,165 @@
+.classContainer {
+    display: grid;
+    height: auto;
+    width: 80%;
+    grid-template-columns: repeat(20%, 4);
+    grid-template-rows: auto 5% auto;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    word-wrap: break-word;
+    border: 0.5vw solid rgb(13, 107, 52);
+    background-color: #212529;
+    border-radius: 2vw;
+    margin-bottom: 1vw;
+    padding: 1vw;
+    padding-bottom: 1.5vw;
+    font-size: 3vw;
+    color: whitesmoke;
+}
+
+.classStart {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    background-color: rgb(13, 107, 52);
+    border-radius: 0.5vw;
+    padding-left: 0.9vw;
+}
+
+.classEnd {
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 1;
+    background-color: rgb(13, 107, 52);
+    border-radius: 0.5vw;
+    padding-left: 0.9vw;
+}
+
+.classCode {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    align-self: center;
+    justify-self: right;
+}
+
+.classType {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    align-self: center;
+    justify-self: center;
+}
+
+.classRoom {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+    align-self: center;
+    justify-self: right;
+}
+
+.seeMore {
+    grid-column: 4 / span 1;
+    grid-row: 1 / span 3;
+    margin-right: 0;
+    margin-left: auto;
+    align-self: center;
+}
+
+#unfold {
+    font-size: 6vw;
+}
+
+.todoContainer {
+    display: grid;
+    height: auto;
+    width: 80%;
+    grid-template-columns: 27% 70%;
+    grid-template-rows: auto;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    word-wrap: break-word;
+    border: 0.5vw solid #212529;
+    background-color: rgb(13, 107, 52);
+    border-radius: 2vw;
+    margin-bottom: 1vw;
+
+    font-size: 3vw;
+    color: whitesmoke;
+}
+
+.taskStart {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    background-color: #212529;
+    border-radius: 0.5vw;
+    padding-left: 0.9vw;
+}
+
+.readToDo {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    padding-left: 2vw;
+}
+
+.classInfo {
+    display: none;
+    height: auto;
+    width: 80%;
+    grid-template-columns: repeat(50%, 2);
+    grid-template-rows: auto 5% auto 5% auto;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    word-wrap: break-word;
+    border: 0.2vw solid rgb(12, 14, 13);
+    background-color: #d6ece0;
+    border-bottom-left-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    margin-bottom: 1vw;
+    padding: 1vw;
+    padding-bottom: 1.5vw;
+    font-size: 3vw;
+    color: rgb(20, 20, 20);
+}
+
+.className {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.classDelivery {
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 1;
+}
+
+.classInstructor {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.instructorEmail {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+}
+
+.classLink {
+    grid-column: 1 / span 2;
+    grid-row: 5 / span 1;
+    align-self: center;
+    justify-self: center;
+}
+
+.classLink > a {
+    color: #212529 !important;
+}
+
+#footerPlaceholder {
+    padding-top: 10%;
+}
+
+#whatIsToday {
+    font-size: 4vw;
+    padding-left: 42%;
+    margin-bottom: 2vw;
+    color: #d6ece0;
+    background-color: #212529;
+}
