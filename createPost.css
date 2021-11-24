@@ -13,12 +13,11 @@
 #writeText {
     width: 80vw;
     height: 40vw;
-
 }
 
 #postText {
-    grid-column: 1/span 1;
-    grid-row: 1/span 1;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
 }
 
 #options {
@@ -30,13 +29,13 @@
     height: auto;
     grid-template-columns: 50% 50%;
     grid-template-rows: 5% auto 35% auto 10% auto 5%;
-    grid-column: 1/span 1;
-    grid-row: 4/span 1;
+    grid-column: 1 / span 1;
+    grid-row: 4 / span 1;
 }
 
 #flairs {
-    grid-column: 1/span 1;
-    grid-row: 2/span 1;
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
     align-self: center;
     margin-top: 40px;
     justify-self: center;
@@ -51,14 +50,14 @@
 .form-select:focus {
     border-color: #198754;
     outline: 0;
-    box-shadow: 0 0 0 .25rem #94d8b8;
+    box-shadow: 0 0 0 0.25rem #94d8b8;
 }
 
 /*---------------------------------------------------------------------------------------- */
 
 #fileAttach {
-    grid-column: 2/span 1;
-    grid-row: 2/span 1;
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
     margin-right: 0%;
     align-self: center;
 
@@ -66,17 +65,63 @@
 }
 
 #cancelPost {
-    grid-column: 1/span 2;
-    grid-row: 6/span 1;
+    grid-column: 1 / span 2;
+    grid-row: 6 / span 1;
     justify-self: center;
 }
 
 #submitPost {
-    grid-column: 1/span 2;
-    grid-row: 4/span 1;
+    grid-column: 1 / span 2;
+    grid-row: 4 / span 1;
     justify-self: center;
 }
 
 footer {
-    padding-top: 20%;
+    padding-top: 200px;
+}
+
+@media only screen and (max-width: 768px) {
+    .ql-container {
+        font-size: 5vw;
+    }
+
+    #options {
+        /*secondary grid inside primary to lay out buttns*/
+        display: grid;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: auto;
+        grid-template-columns: 100%;
+        grid-template-rows: 5% auto 5% auto 5% auto 5% auto 5%;
+    }
+
+    #flairs {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+        align-self: center;
+        margin-top: 40px;
+        margin-left: 18%;
+        justify-self: center;
+    }
+    #fileAttach {
+        grid-column: 1 / span 1;
+        grid-row: 4 / span 1;
+        margin-right: 0%;
+        align-self: center;
+
+        justify-self: center;
+    }
+
+    #cancelPost {
+        grid-column: 1 / span 2;
+        grid-row: 8 / span 1;
+        justify-self: center;
+    }
+
+    #submitPost {
+        grid-column: 1 / span 2;
+        grid-row: 6 / span 1;
+        justify-self: center;
+    }
 }

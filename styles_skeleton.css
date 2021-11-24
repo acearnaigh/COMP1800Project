@@ -137,9 +137,7 @@
     /* using relative and absolute positioning to center text for each icon*/
     position: absolute;
     z-index: 1%;
-    top: 59%;
     font-size: 1.9vw;
-    font-family: 'Times New Roman', Times, serif;
     color: whitesmoke;
     top: 72%;
 }
@@ -237,3 +235,37 @@
         display: none;
     }
 } /*============== Making a CSS grid for our sticky footer =====================*/
+
+@media only screen and (max-width: 768px) {
+    .foot_icons {
+        /*resizing and recoloring icons*/
+        font-size: 7vw;
+        color: whitesmoke;
+    }
+
+    .centering_icon_text {
+        /* using relative and absolute positioning to center text for each icon*/
+        position: absolute;
+        z-index: 1%;
+        top: 59%;
+        font-size: 4vw;
+        color: whitesmoke;
+    }
+    #add_post_text {
+        /*Placing text underneath the icon*/
+
+        left: -5%;
+    }
+    #todo_text {
+        /*Placing text underneath the icon*/
+        left: -15%;
+    }
+    #weekly_text {
+        /*Placing text underneath the icon*/
+        left: -20%;
+    }
+    #daily_text {
+        /*Placing text underneath the icon*/
+        left: -10%;
+    }
+}
