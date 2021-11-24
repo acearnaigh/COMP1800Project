@@ -145,26 +145,8 @@ function getWeeklySchedule() {
 
 getWeeklySchedule();
 
-function goToLoginPage() {
-    window.location.href = 'login.html';
-}
-
-function logout() {
-    firebase
-        .auth()
-        .signOut()
-        .then(function () {
-            console.log('logout successful');
-            window.location.assign('index.html');
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
-
 // format timestamp
 function formatTimestamp(timestamp) {
-    console.log(timestamp);
     const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
     const timeOptions = {
         hour: 'numeric',

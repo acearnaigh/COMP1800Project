@@ -8,3 +8,20 @@ firebase.auth().onAuthStateChanged(function (user) {
         $('#logoutButton').css('display', 'none');
     }
 });
+
+function goToLoginPage() {
+    window.location.href = 'login.html';
+}
+
+function logout() {
+    firebase
+        .auth()
+        .signOut()
+        .then(function () {
+            console.log('logout successful');
+            window.location.assign('index.html');
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
