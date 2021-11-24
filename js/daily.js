@@ -187,7 +187,12 @@ window.addEventListener('load', function () {
                                         let checkID =
                                             document.getElementById(infoID);
                                         if (checkID != null) {
-                                            $('#' + infoID).hide('slow');
+                                            $('#' + infoID).hide(
+                                                'slow',
+                                                function () {
+                                                    $(this).remove();
+                                                }
+                                            );
                                         } else {
                                             dailyInfo.querySelector(
                                                 '.classInfo'
@@ -236,6 +241,10 @@ window.addEventListener('load', function () {
                                                         'target',
                                                         '_blank'
                                                     );
+                                            } else {
+                                                dailyInfo
+                                                    .querySelector('.classLink')
+                                                    .remove();
                                             }
                                             $(dailyInfo).insertAfter(
                                                 this.parentNode.parentNode

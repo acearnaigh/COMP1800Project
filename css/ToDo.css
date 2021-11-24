@@ -73,13 +73,14 @@
     line-height: 2;
     font-size: 4vw;
     border-radius: 2vw;
+    padding: 1vw;
 }
 
 .ui-widget {
     font-size: 3.5vw !important;
 }
 .ui-datepicker .ui-datepicker-title select {
-    font-size: 2vw !important;
+    font-size: 3.2vw !important;
 }
 button,
 input,
@@ -176,5 +177,5 @@ textarea {
 }
 
 #footerPlaceholder {
-    padding-top: 10%;
+    padding-top: 100px;
 }

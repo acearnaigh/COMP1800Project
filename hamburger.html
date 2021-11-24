@@ -1,35 +1,31 @@
 <!--hamburger menu that is picked up by JS
 Make changes here to reflect them globally-->
 
-
-
 <div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="./postDisplay.html">Wall-Updates</a>
-  <a href="#">Quizzes</a>
-  <a href="#">Assignments</a>
-  <a href="#">Office Hours</a>
-  <a href="#">To-Do List</a>
-  <a href="https://www.bcit.ca/covid-19/">Covid News</a>
-  <a href="#">Settings</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="./postDisplay.html">Wall-Updates</a>
+    <a href="#">Quizzes</a>
+    <a href="#">Assignments</a>
+    <a href="#">Office Hours</a>
+    <a href="#">To-Do List</a>
+    <a href="https://www.bcit.ca/covid-19/">Covid News</a>
+    <a href="#">Settings</a>
 </div>
 
 <div id="main">
-  <button class="openbtn" onclick="openNav()">☰</button>
-  <!-- <h2>Collapsed Sidebar</h2>
+    <button class="openbtn" onclick="openNav()">☰</button>
+    <!-- <h2>Collapsed Sidebar</h2>
         <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p> -->
 </div>
 
-
-
 <script id="ham">
-  function openNav() {
-    document.getElementById("mySidebar").style.width = "350px";
-    document.getElementById("main").style.marginLeft = "350px";
-  }
+    function openNav() {
+        document.getElementById('mySidebar').style.width = '250px';
+        document.getElementById('main').style.marginLeft = '250px';
+    }
 
-  function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0"
-  }
+    function closeNav() {
+        document.getElementById('mySidebar').style.width = '0';
+        document.getElementById('main').style.marginLeft = '0';
+    }
 </script>
