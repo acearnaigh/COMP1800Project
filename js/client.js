@@ -164,6 +164,9 @@ function formatTimestamp(timestamp) {
     return `${date} - ${time}`;
 }
 
+function goToDailySchedule() {
+    window.location.href = '/daily.html';
+}
 window.addEventListener('load', function () {
     let weekly = document.getElementById('weekly');
     weekly.getElementsByTagName('a')[0].removeAttribute('href');
