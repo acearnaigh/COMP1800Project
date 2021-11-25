@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- -----------------This page is for making a new post------------------>
-    <!------------=====================================================-------->
-    <!-- accessing this page directly will not load JS and jquery properly-
+<!-- -----------------This page is for making a new post------------------>
+<!------------=====================================================-------->
+<!-- accessing this page directly will not load JS and jquery properly-
 We need a server to run this and since this page should and can only be accesed by
 clicking on a button, there's no need to open this derectly.
 Workflow: Main/skeleton  => clcik on add post => createPost.html-->
 
-    <!--------------------------Mandatory LICENSES----------------------->
-    <!-- Copyright 2021 Manjot Singh Randhawa
+<!--------------------------Mandatory LICENSES----------------------->
+<!-- Copyright 2021 Manjot Singh Randhawa
 
 Licensed under the Apache License, Version 2.0 (the "Licenses/APACHE_LICENSE-2.0.txt");
 you may not use this file except in compliance with the License.
@@ -22,161 +22,117 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License. -->
 
-    <head>
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, minimum-scale=1"
-        />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-        <title>createPost</title>
-        <!-- Bootstrap CSS -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous"
-        />
-        <!-- Google Icons (Material Design)-->
-        <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-        />
-        <!--CSS styles for our skeleton-->
-        <link rel="stylesheet" href="./css/styles_skeleton.css" />
+    <title>createPost</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- Google Icons (Material Design)-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--CSS styles for our skeleton-->
+    <link rel="stylesheet" href="./css/styles_skeleton.css" />
 
-        <!--jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--hamburger-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <!-- Include Twitter Bootstrap and jQuery for multiselect: -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <!-- Include the plugin's CSS and JS for multiselect: -->
+    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css" />
+
+    <!--quill-text editor-->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <!--css for this page-->
+    <link rel="stylesheet" href="./css/createPost.css" />
+
+    <!--firebase CDNs-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+    <!-- Link to the api keys for firebase project -->
+    <script src="scripts/firebaseAPI.js"></script>
+</head>
+
+<body>
+    <header>
+        <!--navbar-->
+        <div id="navbarPlaceholder"></div>
         <!--hamburger-->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"
-        ></script>
+        <div id="hamPlaceholder"></div>
+    </header>
 
-        <!-- Include Twitter Bootstrap and jQuery for multiselect: -->
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"
-        ></script>
+    <main>
+        <!-----------------------------Form goes here----------------------------->
+        <div id="post">
+            <form action="" method="post" id="fillPostForm">
+                <div id="postText">
+                    <label for="postText">
+                        <textarea class="editor" id="writeText" placeholder="Start Writing..." required
+                            autofocus></textarea>
+                    </label>
+                </div>
 
-        <!-- Include the plugin's CSS and JS for multiselect: -->
-        <script
-            type="text/javascript"
-            src="js/bootstrap-multiselect.js"
-        ></script>
-        <link
-            rel="stylesheet"
-            href="css/bootstrap-multiselect.css"
-            type="text/css"
-        />
-
-        <!--quill-text editor-->
-        <link
-            href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
-            rel="stylesheet"
-        />
-        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-        <!--css for this page-->
-        <link rel="stylesheet" href="./css/createPost.css" />
-
-        <!--firebase CDNs-->
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-
-        <!-- Link to the api keys for firebase project -->
-        <script src="scripts/firebaseAPI.js"></script>
-    </head>
-
-    <body>
-        <header>
-            <!--navbar-->
-            <div id="navbarPlaceholder"></div>
-            <!--hamburger-->
-            <div id="hamPlaceholder"></div>
-        </header>
-
-        <main>
-            <!-----------------------------Form goes here----------------------------->
-            <div id="post">
-                <form action="" method="post" id="fillPostForm">
-                    <div id="postText">
-                        <label for="postText">
-                            <textarea
-                                class="editor"
-                                id="writeText"
-                                placeholder="Start Writing..."
-                                required
-                                autofocus
-                            ></textarea>
-                        </label>
+                <br />
+                <!-- Apache multiselect based on JS and bootstrap -->
+                <div id="options">
+                    <div id="flairs">
+                        <label class="form-label" for="chooseTags">Choose Tags:
+                            <select class="form-select form-select-sm" id="selectDrop" multiple="multiple">
+                                <option id="1113" value="1113">1113</option>
+                                <option value="1116">1116</option>
+                                <option value="1712">1712</option>
+                                <option value="1800">1800</option>
+                                <option value="1510">1510</option>
+                                <option value="1100">1100</option>
+                            </select></label>
                     </div>
 
-                    <br />
-                    <!-- Apache multiselect based on JS and bootstrap -->
-                    <div id="options">
-                        <div id="flairs">
-                            <label class="form-label" for="chooseTags"
-                                >Choose Tags:
-                                <select
-                                    class="form-select form-select-sm"
-                                    id="selectDrop"
-                                    multiple="multiple"
-                                >
-                                    <option id="1113" value="1113">1113</option>
-                                    <option value="1116">1116</option>
-                                    <option value="1712">1712</option>
-                                    <option value="1800">1800</option>
-                                    <option value="1510">1510</option>
-                                    <option value="1100">1100</option>
-                                </select></label
-                            >
-                        </div>
-
-                        <div id="fileAttach">
-                            <label
-                                for="formFileMultiple"
-                                class="form-label"
-                            ></label>
-                            <input
-                                class="form-control form-control-sm"
-                                type="file"
-                                id="formFileMultiple"
-                                multiple
-                            />
-                        </div>
-
-                        <div id="cancelPost">
-                            <button type="button" class="btn btn-dark">
-                                Cancel
-                            </button>
-                        </div>
-
-                        <div id="submitPost">
-                            <button type="button" class="btn btn-success">
-                                Submit
-                            </button>
-                        </div>
+                    <div id="fileAttach">
+                        <label for="formFileMultiple" class="form-label"></label>
+                        <input class="form-control form-control-sm" type="file" id="formFileMultiple" multiple />
                     </div>
-                </form>
-            </div>
-            <!-----------------------------------------------Form goes here------------------------------------------>
-        </main>
 
-        <!--footer-->
-        <footer id="footerPlaceholder"></footer>
-        <!--loading in the three basic elements navbar, footer, hamburger-->
-        <script src="./js/skeleton.js"></script>
+                    <div id="cancelPost">
+                        <button type="button" class="btn btn-dark">
+                            Cancel
+                        </button>
+                    </div>
 
-        <!--editing this specific page-->
-        <script src="./js/createPost.js"></script>
-        <script src="./js/navbar.js"></script>
-    </body>
+                    <div id="submitPost">
+                        <button type="button" class="btn btn-success">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-----------------------------------------------Form goes here------------------------------------------>
+    </main>
+
+    <!--footer-->
+    <footer id="footerPlaceholder"></footer>
+    <!--loading in the three basic elements navbar, footer, hamburger-->
+    <script src="./js/skeleton.js"></script>
+
+    <!--editing this specific page-->
+    <script src="./js/createPost.js"></script>
+    <script src="./js/navbar.js"></script>
+</body>
+
 </html>

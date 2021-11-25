@@ -1,6 +1,5 @@
 <!--hamburger menu that is picked up by JS
 Make changes here to reflect them globally-->
-
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <a href="./postDisplay.html">Wall-Updates</a>
@@ -11,13 +10,11 @@ Make changes here to reflect them globally-->
     <a href="https://www.bcit.ca/covid-19/">Covid News</a>
     <a href="#">Settings</a>
 </div>
-
 <div id="main">
     <button class="openbtn" onclick="openNav()">☰</button>
     <!-- <h2>Collapsed Sidebar</h2>
         <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p> -->
 </div>
-
 <script id="ham">
     function openNav() {
         document.getElementById('mySidebar').style.width = '250px';
