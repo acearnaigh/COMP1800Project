@@ -41,7 +41,7 @@
     justify-self: center;
 }
 
-/*-------------Selectors picked out selectively from inspect element to make shit green */
+/*-------------Selectors picked out selectively from inspect element to make stuff green */
 .form-check-input:checked {
     background-color: #198754;
     border-color: #198754;
@@ -53,7 +53,7 @@
     box-shadow: 0 0 0 0.25rem #94d8b8;
 }
 
-/*---------------------------------------------------------------------------------------- */
+/*-------------Selectors picked out selectively from inspect element to make stuff green */
 
 #fileAttach {
     grid-column: 2 / span 1;
@@ -80,13 +80,13 @@ footer {
     padding-top: 200px;
 }
 
+/* responsive layout for mobile screens */
 @media only screen and (max-width: 768px) {
     .ql-container {
         font-size: 5vw;
     }
 
     #options {
-        /*secondary grid inside primary to lay out buttns*/
         display: grid;
         margin-left: auto;
         margin-right: auto;

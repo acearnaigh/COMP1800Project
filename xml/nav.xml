@@ -23,12 +23,6 @@ Make changes here to reflect them globally-->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="main.html">Home</a>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li> -->
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"

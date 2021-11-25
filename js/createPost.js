@@ -1,3 +1,18 @@
+// This page can be used by a BCIT student (user) to make a new post and inform their peers about schedule changes,
+//assignment deadlines changed, or anything new that might affect others in their set or term.
+
+// This page will give you:
+//      -a WYSIWYG (What You Say Is What You Get) text editor with limited functionality
+//      (although scalable) to edit your post the way you want
+//      -an option to add tags to your post which are used to categorize the post
+//      -an option to add attachments.
+
+//We used an open-source Quill Editor to make this happen. The buttons in the toolbar are not just placeholders,
+//but with the help of JS, and JQuery, they are functional and edit the text.
+//After this, there’s a dropdown with checkboxes for adding tags. We know it looks really simple but a dropdown usually
+//just has single-select options unless you convert each choice to a button of its own which sounds tedious.
+//It uses bootstrap and javascript to convert ‘select’ elements into a dropdown with checkboxes.
+
 //listener event for after DOMContentLoaded
 window.addEventListener('load', function () {
     //disabling the button add_post after you're on the right page
@@ -95,14 +110,23 @@ $(document).ready(function () {
 
 //-------------------------------------------------------------------
 
+// After a user clicks on submit:
+//          -event listener detects a click
+//          -get innerHTML for what the user typed in using our editor
+//          -get an array of all the tags they selected
+//          -use firebase’s timestamp function to get the precise time at which the user clicked submit
+//          -create a unique ID for post document
+//          -put all the data in their respective collections
+//          -after the above step is done, get an updated snapshot, use the unique postID to check if
+//           their record was created and if it was, redirect them to the next page, else, we’ll display an error (alert) message.
+//          -Assuming the submission was successful, the database is update, The user is redirected to postDisplay.html.
+//           A page where you can see all the posts made by everyone including your own.
+
 document
     .getElementById('submitPost')
     .addEventListener('click', async function storeData() {
         var postInnerHTML = document.getElementById('writeText').value;
         var postTags = $('#selectDrop').val();
-        // var today = new Date();
-        // var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var time = firebase.firestore.Timestamp.now();
         var postDB = db.collection('posts');
 
@@ -139,11 +163,3 @@ document
             }
         });
     });
-
-// window.addEventListener("beforeunload", function (e) {
-//     var confirmationMessage = 'It looks like you have been editing something. '
-//                             + 'If you leave before saving, your changes will be lost.';
-
-//     (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-//     return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
-// });

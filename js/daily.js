@@ -1,15 +1,31 @@
-// db.collection('testSchedule')
-//     .doc('Monday')
-//     .listCollections()
-//     .then((subCollections) => {
-//         subCollections.forEach((subCollection) => {
-//             subCollection.get().then((array) => {
-//                 array.docs.forEach((doc) => {
-//                     console.log(doc.data())
-//                 })
-//             })
-//         })
-//     })
+//we give priority information and as soon as you open this page, you’ll be given a list of classes,
+//along with user-created custom tasks. A user can expand the class label to get more information about it.
+
+// Logic behind daily.js: (steps occur in order)
+// 1.      What day is today? (Monday, Tuesday, ………….) let’s say Tuesday
+// 2.      Get (dayCRN => Tuesday => [array of class numbers]).
+// 3.      For each [array of class numbers (CRN)]:
+//      a.      Get (class number (CRN) => Tuesday => all fields of class info).then (populate T1) and append() to falseDaily.
+// 4.      Go into tasks collection => for current user =>
+//          If (task is due today): {
+//              get (tasks).then(populate T3) and append() to falseDaily
+//              }
+// 5.      While we were appending and populating templates, we gave each one of them a unique ID too.
+// 6.      All these tasks and classes are in random order and not ordered by timestamp.
+// 7.      Store ID’s for all divs under falseDaily in an array.
+//      a.      Use a sort on this array to order them w.r.t timestamp using a custom ‘compare’ function (similar to java comparable interface)
+//      b.      Now, go through this sorted array of ID’s => getElementByID => append() to trueDaily and remove() from falseDaily
+// 8.      After all the above steps are done, addEventListeners to ‘dropdown’ icons.
+// 9.      onCLick(dropdown icon) => get (class information).then =>populate T2 and append().
+
+//used later, but for converting milliseconds into a proper time format
+var timeOptions = {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+};
+
+//get today's weekday
 const whatDate = new Date();
 const weekday = new Array(7);
 weekday[0] = 'Sunday';
@@ -20,14 +36,10 @@ weekday[4] = 'Thursday';
 weekday[5] = 'Friday';
 weekday[6] = 'Saturday';
 
-var timeOptions = {
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-};
-
 let today = weekday[whatDate.getDay()];
 console.log(today);
+//====================
+
 window.addEventListener('load', function () {
     document.getElementById('whatIsToday').textContent = today;
     //disabling the button add_post after you're on the right page
@@ -41,6 +53,7 @@ window.addEventListener('load', function () {
     let falseContainer = document.getElementById('falseDaily');
     let trueContainer = document.getElementById('trueDaily');
 
+    //use the master collection to get the id of correct class collection
     db.collection('dayCRN')
         .doc(today)
         .get()
@@ -48,10 +61,12 @@ window.addEventListener('load', function () {
             const classList = docs.data().classList;
             for (const key in classList) {
                 classList[key];
+                // go into the class collection with the id you got from master collection
                 db.collection(classList[key])
                     .doc(today)
                     .get()
                     .then((docs) => {
+                        // populate template div
                         let dailyTemplate =
                             dailyContainer.content.cloneNode(true);
                         dailyTemplate.querySelector('.classCode').textContent =
@@ -60,6 +75,7 @@ window.addEventListener('load', function () {
                             docs.data().courseType;
                         dailyTemplate.querySelector('.classRoom').textContent =
                             docs.data().courseRoom;
+                        //time options that was declared globally on top is used here
                         dailyTemplate.querySelector('.classStart').textContent =
                             new Intl.DateTimeFormat(
                                 'en-US',
@@ -70,14 +86,17 @@ window.addEventListener('load', function () {
                                 'en-US',
                                 timeOptions
                             ).format(docs.data().courseEndTime.toDate());
+                        // giving each div a unique ID so we access them later
                         dailyTemplate.querySelector('.classContainer').id =
                             this.localStorage.getItem('userID') +
                             classList[key];
+                        //appending divs without sorting them w.r.t timestamp
                         falseContainer.appendChild(dailyTemplate);
                     });
             }
         })
         .then(function () {
+            // after populating divs with class schedule, get today's tasks and populate another template
             let taskContainer = document.getElementById('dailyTaskContainer');
             db.collection('tasks')
                 .doc(this.localStorage.getItem('userID'))
@@ -110,11 +129,13 @@ window.addEventListener('load', function () {
                             ).format(milliseconds);
                             taskTemplate.querySelector('.todoContainer').id =
                                 localStorage.getItem('userID') + milliseconds;
+                            // again, no sorting just append to a dummy placeholder
                             falseContainer.appendChild(taskTemplate);
                         }
                     }
                 })
                 .then(function () {
+                    // now, we get the Id's for all the divs appended to our dummy placeholder falseDaily
                     let idArr = [];
                     let elementWithId = document
                         .getElementById('falseDaily')
@@ -127,7 +148,8 @@ window.addEventListener('load', function () {
                             idArr.push(el.id);
                         }
                     );
-
+                    // for each ID in the array, get the time associated with it, use a custom compare function
+                    // to compare Divs based on timestamp and order them in ascending
                     console.log(idArr);
                     idArr.sort(function compareDatesbyID(id1, id2) {
                         let dateID1 = new Date(
@@ -154,11 +176,13 @@ window.addEventListener('load', function () {
                         }
                     });
                     console.log(idArr);
+                    // append the divs in a sorted order to the actual div placeholder
                     Array.prototype.forEach.call(idArr, function (elID, i) {
                         $('#' + elID).appendTo('#trueDaily');
                     });
                 })
                 .then(function () {
+                    // add a listener to all the dropdown icons on the page
                     moreInfoListen = document.querySelectorAll('#unfold');
                     let dailyClassInfo =
                         document.getElementById('dailyClassInfo');
@@ -186,6 +210,7 @@ window.addEventListener('load', function () {
                                             collectionName;
                                         let checkID =
                                             document.getElementById(infoID);
+                                        //if the dropdown is already expanded, hide it.
                                         if (checkID != null) {
                                             $('#' + infoID).hide(
                                                 'slow',
@@ -194,6 +219,7 @@ window.addEventListener('load', function () {
                                                 }
                                             );
                                         } else {
+                                            //else show and populate the dropdown template
                                             dailyInfo.querySelector(
                                                 '.classInfo'
                                             ).id = infoID;
@@ -221,6 +247,7 @@ window.addEventListener('load', function () {
                                                 'Instructor Email: ' +
                                                 docs.data().instructorEmail;
                                             if (
+                                                //only show the link button if it exists in the collection
                                                 docs.data().courseLink != null
                                             ) {
                                                 dailyInfo

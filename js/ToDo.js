@@ -5,6 +5,7 @@ var timeOptions = {
     hour12: true,
 };
 
+// using jquery datepicker
 $(function () {
     $('#datepicker').datepicker({
         showButtonPanel: true,
@@ -15,17 +16,23 @@ $(function () {
     });
 });
 
+// using jquery timepicker
 $('#time').bootstrapMaterialDatePicker({
     date: false,
     shortTime: false,
     format: 'HH:mm',
 });
 
+//auto-adjust lineheight for user input
 function auto_grow(element) {
     element.style.height = '10px';
     element.style.height = element.scrollHeight + 'px';
 }
 
+// As soon as you load this page, we check the firestore collection to see if there were any previous tasks.
+// If yes => populate this page with the div template and add listeners to them for interactive operations.
+// else => continue
+// Note: Reading data takes place only and only when the page is first loaded.
 document.getElementById('submitToDo').addEventListener('click', function () {
     var task = document.getElementById('writeTask').value;
     var date = document.getElementById('datepicker').value;
@@ -42,7 +49,8 @@ document.getElementById('submitToDo').addEventListener('click', function () {
             if (user) {
                 var currentUser = db.collection('users').doc(user.uid);
                 var userUID = user.uid;
-
+                // After landing on this page, input text into the field => choose date and
+                // time with jquery datepicker and timepicker => click on Add to list…
                 currentUser
                     .get()
                     .then((userDoc) => {
@@ -50,12 +58,21 @@ document.getElementById('submitToDo').addEventListener('click', function () {
                             .doc(userUID)
                             .set(
                                 {
+                                    // We use a unique id for not just our documents but also for each field within a document.
+                                    // This way, the field name has a timestamp and field value has the task.
                                     [user.uid + fieldID]: task,
                                 },
                                 { merge: true }
                             );
                     })
                     .then(function () {
+                        // I’ve read that Firestore charges clients based on the number of reads and writes.
+                        // I know it doesn’t affect us but I wanted to find a workaround. So, as soon as you click on
+                        // ‘Add to list…’ the data is written into the collection, but never read.
+                        // Instead the data that is being sent into the collection is just reused to populate a div
+                        // template instantly. Any changes that a user makes to their task are updated in the database,
+                        // the user has the visual feedback of adding, updating and deleting tasks, while
+                        // we don’t have to constantly read from the collection.
                         let taskContainer =
                             document.getElementById('container');
                         let listContainer =
@@ -80,6 +97,10 @@ document.getElementById('submitToDo').addEventListener('click', function () {
                         listContainer.appendChild(taskTemplate);
                     })
                     .then(function () {
+                        // There are three buttons available to the user that let’s users  mark a task as done,
+                        // undo their last action, and delete their task. This is done by adding listeners to each of these three buttons.
+                        //To mark something as done, we take the current textContent, wrap it in <s>.
+                        //Similarly, we can undo and delete our tasks too.
                         let completeListen = document
                             .querySelector(
                                 '#' + localStorage.getItem('userID') + fieldID
@@ -126,11 +147,6 @@ document.getElementById('submitToDo').addEventListener('click', function () {
                                             '.readToDo'
                                         ).innerHTML,
                                 });
-
-                            // this.style.color =
-                            //     window.getComputedStyle(completeListen[x]).color ===
-                            //     'rgb(0, 0, 0)' ? 'rgb(0, 128, 0)'
-                            //         : 'rgb(0, 0, 0)';
                         });
                         removeListen.addEventListener('click', function () {
                             let constructRemoveTaskID =
@@ -208,6 +224,9 @@ window.addEventListener('load', function () {
     userTask
         .get()
         .then((taskDoc) => {
+            // So when I get a document, I use a simple ‘for’ loop to iterate through all fields of a document.
+            // For every field: we get it’s id, destructure it to get a timestamp and use the field value to
+            // populate the div templates.
             const taskData = taskDoc.data();
             for (const key in taskData) {
                 const value = taskData[key];

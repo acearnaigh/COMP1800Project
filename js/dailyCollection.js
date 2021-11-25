@@ -1,6 +1,9 @@
+//=========================================================================================================
+// Hardcoding the entire collection for class schedules.
+// ========================================================================================================
 db.collection('CRN30388')
     .doc('Monday')
-    .set({
+    .update({
         courseID: 'COMP 1510',
         courseName: 'Programming Methods',
         courseRoom: 'SE12 321',
