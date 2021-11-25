@@ -1,12 +1,11 @@
 <!--Navbar thatt is picked up by JS
 Make changes here to reflect them globally-->
-
 <nav
   class="navbar navbar-expand-sm navbar-dark bg-dark"
   aria-label="Third navbar example">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">BCIT Student Schedule</a>
-    <button
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">BCIT Student Schedule</a>
+        <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -15,16 +14,15 @@ Make changes here to reflect them globally-->
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExample03">
-      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="main.html">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="main.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
             class="nav-link dropdown-toggle"
             href="#"
             id="dropdown03"
@@ -32,19 +30,27 @@ Make changes here to reflect them globally-->
             aria-expanded="false"
             >Features</a
           >
-          <ul class="dropdown-menu" aria-labelledby="dropdown03">
-            <li><a class="dropdown-item" href="#">Classes</a></li>
-            <li><a class="dropdown-item" href="#">Quizzes</a></li>
-            <li><a class="dropdown-item" href="#">Assignments</a></li>
-            <li><a class="dropdown-item" href="#">Covid News</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="text-end">
-        <button id="loginSignupButton" type="button" class="btn btn-success" onclick="goToLoginPage()">
+                    <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                        <li>
+                            <a class="dropdown-item" href="#">Classes</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Quizzes</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Assignments</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Covid News</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="text-end">
+                <button id="loginSignupButton" type="button" class="btn btn-success" onclick="goToLoginPage()">
           Login / Sign-up
         </button>
-        <button id="logoutButton" type="button" class="btn btn-outline-light me-2" onclick="logout()">Logout</button>
-    </div>
-  </div>
-</nav>
+                <button id="logoutButton" type="button" class="btn btn-outline-light me-2" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>

@@ -1,149 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, minimum-scale=1"
-        />
 
-        <title>daily</title>
-        <!-- Bootstrap CSS -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous"
-        />
-        <!-- Google Icons (Material Design)-->
-        <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-        />
-        <!--CSS styles for our skeleton-->
-        <link rel="stylesheet" href="./css/styles_skeleton.css" />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-        <!--jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>daily</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- Google Icons (Material Design)-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--CSS styles for our skeleton-->
+    <link rel="stylesheet" href="./css/styles_skeleton.css" />
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--hamburger-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <!-- Include Twitter Bootstrap and jQuery for multiselect: -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <!-- Include the plugin's CSS and JS for multiselect: -->
+    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css" />
+
+    <!--quill-text editor-->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <!--css for this page-->
+    <link rel="stylesheet" href="./css/daily.css" />
+
+    <!--firebase CDNs-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+    <!-- Link to the api keys for firebase project -->
+    <script src="scripts/firebaseAPI.js"></script>
+</head>
+
+<body>
+    <!-- =======================template for daily classes =======================-->
+    <template id="dailyContainer">
+        <div class="classContainer">
+            <div class="classCode"></div>
+            <div class="classType"></div>
+            <div class="classRoom"></div>
+            <div class="classStart readTime"></div>
+            <div class="classEnd"></div>
+            <div class="seeMore">
+                <i id="unfold" class="material-icons">unfold_more</i>
+            </div>
+        </div>
+    </template>
+    <!-- =======================template for daily classes =======================-->
+
+    <!-- =======================template for daily tasks===================== -->
+    <template id="dailyTaskContainer">
+        <div class="todoContainer">
+            <div class="readToDo"></div>
+            <div class="taskStart readTime"></div>
+        </div>
+    </template>
+    <!-- =======================template for daily tasks===================== -->
+
+    <!-- ==================template for daily class information ================-->
+    <template id="dailyClassInfo">
+        <div class="classInfo">
+            <div class="className"></div>
+            <div class="classDelivery"></div>
+            <div class="classLink">
+                <button type="button" class="btn .btn-lg btn-outline-success">
+                    <a>Class Link</a>
+                </button>
+            </div>
+            <div class="classInstructor"></div>
+            <div class="instructorEmail"></div>
+        </div>
+    </template>
+    <!-- ==================template for daily class information ================-->
+    <header>
+        <!--navbar-->
+        <div id="navbarPlaceholder"></div>
         <!--hamburger-->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"
-        ></script>
+        <div id="hamPlaceholder"></div>
+    </header>
 
-        <!-- Include Twitter Bootstrap and jQuery for multiselect: -->
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"
-        ></script>
+    <main>
+        <!-- placeholder for current weekday -->
+        <div id="whatIsToday"></div>
 
-        <!-- Include the plugin's CSS and JS for multiselect: -->
-        <script
-            type="text/javascript"
-            src="js/bootstrap-multiselect.js"
-        ></script>
-        <link
-            rel="stylesheet"
-            href="css/bootstrap-multiselect.css"
-            type="text/css"
-        />
+        <!-- dummy placeholder for appending divs before sorting them by timestamp -->
+        <div id="falseDaily"></div>
 
-        <!--quill-text editor-->
-        <link
-            href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
-            rel="stylesheet"
-        />
-        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-        <!--css for this page-->
-        <link rel="stylesheet" href="./css/daily.css" />
+        <!-- actual placeholder for appending divs after they have been sorted by timestamp -->
+        <div id="trueDaily"></div>
+    </main>
+    <!--footer-->
+    <footer>
+        <div id="footerPlaceholder"></div>
+    </footer>
 
-        <!--firebase CDNs-->
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <!--loading in the three basic elements navbar, footer, hamburger-->
+    <script src="./js/skeleton.js"></script>
 
-        <!-- Link to the api keys for firebase project -->
-        <script src="scripts/firebaseAPI.js"></script>
-    </head>
+    <!--editing this specific page-->
+    <script src="./js/dailyCollection.js"></script>
+    <script src="./js/daily.js"></script>
+    <script src="./js/navbar.js"></script>
+</body>
 
-    <body>
-        <!-- =======================template for daily classes =======================-->
-        <template id="dailyContainer">
-            <div class="classContainer">
-                <div class="classCode"></div>
-                <div class="classType"></div>
-                <div class="classRoom"></div>
-                <div class="classStart readTime"></div>
-                <div class="classEnd"></div>
-                <div class="seeMore">
-                    <i id="unfold" class="material-icons">unfold_more</i>
-                </div>
-            </div>
-        </template>
-        <!-- =======================template for daily classes =======================-->
-
-        <!-- =======================template for daily tasks===================== -->
-        <template id="dailyTaskContainer">
-            <div class="todoContainer">
-                <div class="readToDo"></div>
-                <div class="taskStart readTime"></div>
-            </div>
-        </template>
-        <!-- =======================template for daily tasks===================== -->
-
-        <!-- ==================template for daily class information ================-->
-        <template id="dailyClassInfo">
-            <div class="classInfo">
-                <div class="className"></div>
-                <div class="classDelivery"></div>
-                <div class="classLink">
-                    <button
-                        type="button"
-                        class="btn .btn-lg btn-outline-success"
-                    >
-                        <a>Class Link</a>
-                    </button>
-                </div>
-                <div class="classInstructor"></div>
-                <div class="instructorEmail"></div>
-            </div>
-        </template>
-        <!-- ==================template for daily class information ================-->
-        <header>
-            <!--navbar-->
-            <div id="navbarPlaceholder"></div>
-            <!--hamburger-->
-            <div id="hamPlaceholder"></div>
-        </header>
-
-        <main>
-            <!-- placeholder for current weekday -->
-            <div id="whatIsToday"></div>
-
-            <!-- dummy placeholder for appending divs before sorting them by timestamp -->
-            <div id="falseDaily"></div>
-
-            <!-- actual placeholder for appending divs after they have been sorted by timestamp -->
-            <div id="trueDaily"></div>
-        </main>
-        <!--footer-->
-        <footer>
-            <div id="footerPlaceholder"></div>
-        </footer>
-
-        <!--loading in the three basic elements navbar, footer, hamburger-->
-        <script src="./js/skeleton.js"></script>
-
-        <!--editing this specific page-->
-        <script src="./js/dailyCollection.js"></script>
-        <script src="./js/daily.js"></script>
-        <script src="./js/navbar.js"></script>
-    </body>
 </html>
