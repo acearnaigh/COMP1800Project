@@ -348,7 +348,7 @@ db.collection('dayCRN')
         classList: ['CRN30388', 'CRN30384', 'CRN48401', 'CRN32203'],
     });
 db.collection('dayCRN')
-    .doc('Thrusday')
+    .doc('Thursday')
     .update({
         classList: ['CRN46878', 'CRN34590', 'CRN46864', 'CRN45304'],
     });
