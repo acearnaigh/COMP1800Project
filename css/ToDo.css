@@ -1,3 +1,4 @@
+/* -----------------editing pre-built library css jquery datepicker-----------------*/
 .ui-datepicker-trigger {
     width: 5vw;
     margin-left: 2%;
@@ -10,7 +11,9 @@
 .dtp div.dtp-time {
     background: rgb(18, 146, 71) !important;
 }
+/* -----------------editing pre-built library css jquery datepicker-----------------*/
 
+/* --------------------------laying out div for user-input task------------------------*/
 #writeTask {
     border: 1px solid #ccc;
     font-family: inherit;
@@ -23,9 +26,10 @@
     resize: none;
     overflow: hidden;
     min-height: 40px;
-    /* max-height: 100px; */
 }
+/* --------------------------laying out div for user-input task------------------------*/
 
+/* =========================assigning divs to certain grid parts for user-input task=============================*/
 .form-control {
     width: 20vw;
     background-color: rgb(193, 250, 215);
@@ -42,15 +46,11 @@
 #userInput {
     grid-row: 1 / span 1;
     grid-column: 1 / span 2;
-    /* align-self: center;
-    justify-self: center; */
     margin-left: 10%;
 }
 #addDate {
     grid-row: 3 / span 1;
     grid-column: 1 / span 1;
-    /* align-self: center;
-    justify-self: center; */
     margin-right: 3%;
     margin-left: auto;
 }
@@ -58,8 +58,6 @@
 #addTime {
     grid-row: 3 / span 1;
     grid-column: 2 / span 1;
-    /* align-self: center;
-    justify-self: center; */
     margin-left: 3%;
 }
 
@@ -69,6 +67,7 @@
     align-self: center;
     justify-self: center;
 }
+/* =========================assigning divs to certain grid parts for user-input task=============================*/
 .form-control {
     line-height: 2;
     font-size: 4vw;
@@ -76,6 +75,7 @@
     padding: 1vw;
 }
 
+/* -----------------editing pre-built library css jquery timepicker-----------------*/
 .ui-widget {
     font-size: 3.5vw !important;
 }
@@ -98,13 +98,14 @@ textarea {
 .btn {
     font-size: 3vw;
 }
-
+/* -----------------editing pre-built library css jquery timepicker-----------------*/
 #listContainer {
     padding-top: 10%;
     margin-left: 0;
     margin-right: 0;
 }
 
+/*--------------------------laying out div for user-task------------------------*/
 .todoContainer {
     display: grid;
     width: 90%;
@@ -121,7 +122,9 @@ textarea {
     overflow: hidden;
     word-wrap: break-word;
 }
+/*--------------------------laying out div for user-task------------------------*/
 
+/* =========================assigning divs to certain grid parts for user-task=============================*/
 .readToDo {
     grid-column: 1 / span 1;
     grid-row: 1 / span 3;
@@ -175,7 +178,7 @@ textarea {
     margin-left: auto;
     font-size: 4vw;
 }
-
+/* =========================assigning divs to certain grid parts for user-task=============================*/
 #footerPlaceholder {
     padding-top: 100px;
 }

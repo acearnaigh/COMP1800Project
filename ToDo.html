@@ -20,7 +20,7 @@
             rel="stylesheet"
         />
         <!--CSS styles for our skeleton-->
-        <link rel="stylesheet" href="styles_skeleton.css" />
+        <link rel="stylesheet" href="./css/styles_skeleton.css" />
 
         <!--jquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -72,7 +72,7 @@
         <!-- Link to the api keys for firebase project -->
         <script src="scripts/firebaseAPI.js"></script>
 
-        <!--Smol Calendar-->
+        <!---------------------------------------------Smol Calendar-------------------------------------------->
         <link
             rel="stylesheet"
             href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css"
@@ -80,15 +80,12 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 
-        <!--clocl-->
+        <!--------------------------------------------clock---------------------------------------------------->
         <link
             rel="stylesheet"
             href="./css/bootstrap-material-datetimepicker.css"
         />
-        <!-- <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css"
-        /> -->
+
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css"
@@ -108,9 +105,11 @@
             type="text/javascript"
             src="./js/bootstrap-material-datetimepicker.js"
         ></script>
+        <!--------------------------------------------clock---------------------------------------------------->
     </head>
 
     <body>
+        <!--====================================template for user-tasks==============================-->
         <template id="container">
             <div class="todoContainer">
                 <div class="readToDo"></div>
@@ -127,6 +126,7 @@
                 </div>
             </div>
         </template>
+        <!--====================================template for user-tasks==============================-->
         <header>
             <!--navbar-->
             <div id="navbarPlaceholder"></div>
@@ -136,6 +136,7 @@
 
         <main>
             <div id="inputContainer">
+                <!-- automatically grow the text area at line break -->
                 <div id="userInput" class="form-group">
                     <textarea
                         id="writeTask"
@@ -182,7 +183,7 @@
         </footer>
 
         <!--loading in the three basic elements navbar, footer, hamburger-->
-        <script src="skeleton.js"></script>
+        <script src="./js/skeleton.js"></script>
 
         <!--editing this specific page-->
         <script src="./js/ToDo.js"></script>

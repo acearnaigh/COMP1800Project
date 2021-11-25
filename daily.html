@@ -20,7 +20,7 @@
             rel="stylesheet"
         />
         <!--CSS styles for our skeleton-->
-        <link rel="stylesheet" href="styles_skeleton.css" />
+        <link rel="stylesheet" href="./css/styles_skeleton.css" />
 
         <!--jquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -74,6 +74,7 @@
     </head>
 
     <body>
+        <!-- =======================template for daily classes =======================-->
         <template id="dailyContainer">
             <div class="classContainer">
                 <div class="classCode"></div>
@@ -86,14 +87,18 @@
                 </div>
             </div>
         </template>
+        <!-- =======================template for daily classes =======================-->
 
+        <!-- =======================template for daily tasks===================== -->
         <template id="dailyTaskContainer">
             <div class="todoContainer">
                 <div class="readToDo"></div>
                 <div class="taskStart readTime"></div>
             </div>
         </template>
+        <!-- =======================template for daily tasks===================== -->
 
+        <!-- ==================template for daily class information ================-->
         <template id="dailyClassInfo">
             <div class="classInfo">
                 <div class="className"></div>
@@ -110,6 +115,7 @@
                 <div class="instructorEmail"></div>
             </div>
         </template>
+        <!-- ==================template for daily class information ================-->
         <header>
             <!--navbar-->
             <div id="navbarPlaceholder"></div>
@@ -118,8 +124,13 @@
         </header>
 
         <main>
+            <!-- placeholder for current weekday -->
             <div id="whatIsToday"></div>
+
+            <!-- dummy placeholder for appending divs before sorting them by timestamp -->
             <div id="falseDaily"></div>
+
+            <!-- actual placeholder for appending divs after they have been sorted by timestamp -->
             <div id="trueDaily"></div>
         </main>
         <!--footer-->
@@ -128,7 +139,7 @@
         </footer>
 
         <!--loading in the three basic elements navbar, footer, hamburger-->
-        <script src="skeleton.js"></script>
+        <script src="./js/skeleton.js"></script>
 
         <!--editing this specific page-->
         <script src="./js/dailyCollection.js"></script>
