@@ -73,6 +73,7 @@
     font-size: 4vw;
     border-radius: 2vw;
     padding: 1vw;
+    width: 30vw;
 }
 
 /* -----------------editing pre-built library css jquery timepicker-----------------*/
@@ -82,22 +83,22 @@
 .ui-datepicker .ui-datepicker-title select {
     font-size: 3.2vw !important;
 }
-button,
+/* button,
 input,
 optgroup,
 select,
 textarea {
     line-height: 10px;
-}
+} */
 .dtp > .dtp-content {
     max-width: 80% !important;
     max-height: 80% !important;
     left: 50% !important;
 }
 
-.btn {
+/* .btn {
     font-size: 3vw;
-}
+} */
 /* -----------------editing pre-built library css jquery timepicker-----------------*/
 #listContainer {
     padding-top: 10%;
