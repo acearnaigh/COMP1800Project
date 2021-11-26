@@ -43,11 +43,11 @@ console.log(today);
 window.addEventListener('load', function () {
     document.getElementById('whatIsToday').textContent = today;
     //disabling the button add_post after you're on the right page
-    let daily = document.getElementById('daily');
-    daily.getElementsByTagName('a')[0].removeAttribute('href');
-    daily.getElementsByClassName('foot_icons')[0].style.color = 'black';
-    daily.getElementsByClassName('centering_icon_text')[0].style.color =
-        'black';
+    // let daily = document.getElementById('daily');
+    // daily.getElementsByTagName('a')[0].removeAttribute('href');
+    // daily.getElementsByClassName('foot_icons')[0].style.color = 'black';
+    // daily.getElementsByClassName('centering_icon_text')[0].style.color =
+    //     'black';
     //------------------------------------------------------------------------
     let dailyContainer = document.getElementById('dailyContainer');
     let falseContainer = document.getElementById('falseDaily');
