@@ -207,13 +207,6 @@ document.getElementById('submitToDo').addEventListener('click', function () {
 });
 
 window.addEventListener('load', function () {
-    //disabling the button add_post after you're on the right page
-    let todo = document.getElementById('todo');
-    todo.getElementsByTagName('a')[0].removeAttribute('href');
-    todo.getElementsByClassName('foot_icons')[0].style.color = 'black';
-    todo.getElementsByClassName('centering_icon_text')[0].style.color = 'black';
-    //------------------------------------------------------------------------
-
     let taskContainer = document.getElementById('container');
     let listContainer = document.getElementById('listContainer');
 
