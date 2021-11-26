@@ -15,14 +15,6 @@
 
 //listener event for after DOMContentLoaded
 window.addEventListener('load', function () {
-    //disabling the button add_post after you're on the right page
-    addPost = document.getElementById('add_post');
-    addPost.getElementsByTagName('a')[0].removeAttribute('href');
-    addPost.getElementsByClassName('foot_icons')[0].style.color = 'black';
-    addPost.getElementsByClassName('centering_icon_text')[0].style.color =
-        'black';
-    //------------------------------------------------------------------------
-
     // quill editor doesn't work on textarea, so a workaorund using divs and hiding textarea
     // workaround is basically: for every quill-editor class it finds,it will create a div after the textarea field
     //with a unique id and a fixed height, which will be used by the quill editor instance. the original textarea will get hidden.

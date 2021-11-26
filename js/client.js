@@ -165,12 +165,5 @@ function formatTimestamp(timestamp) {
 }
 
 function goToDailySchedule() {
-    window.location.href = '/daily.html';
+    window.location.href = './daily.html';
 }
-window.addEventListener('load', function () {
-    let weekly = document.getElementById('weekly');
-    weekly.getElementsByTagName('a')[0].removeAttribute('href');
-    weekly.getElementsByClassName('foot_icons')[0].style.color = 'black';
-    weekly.getElementsByClassName('centering_icon_text')[0].style.color =
-        'black';
-});
