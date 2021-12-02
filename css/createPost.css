@@ -100,7 +100,9 @@ footer {
         grid-row: 2 / span 1;
         align-self: center;
         margin-top: 40px;
-        margin-left: 25%;
+        /* margin-left: 25%; */
+        margin-left: auto;
+        margin-right: auto;
         justify-self: center;
     }
     #fileAttach {
